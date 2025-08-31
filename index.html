@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Portfolio Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="chart-section">
+        <div class="chart-controls">
+          <button data-range="1month">1 Month</button>
+          <button data-range="3month">3 Months</button>
+          <button data-range="1year">1 Year</button>
+          <button data-range="5year">5 Years</button>
+        </div>
+        <canvas id="stockChart"></canvas>
+        <div id="peakLowValues"></div>
+      </section>
+
+      <aside class="list-section" id="stockList"></aside>
+
+      <section class="details-section" id="stockDetails">
+        <h2 id="stockName"></h2>
+        <p>Profit: <span id="stockProfit"></span></p>
+        <p>Book Value: <span id="stockBookValue"></span></p>
+        <p id="stockSummary"></p>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
