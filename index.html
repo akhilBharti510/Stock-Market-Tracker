@@ -5,30 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stock Portfolio Tracker</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
   </head>
   <body>
+    <header class="topbar">
+      <h1>Stock Portfolio Tracker</h1>
+      <div class="topbar-actions">
+        <button id="themeToggle" class="btn ghost" title="Toggle Dark Mode">🌙</button>
+        <button id="exportChart" class="btn" title="Export chart as PNG">Export Chart</button>
+      </div>
+    </header>
+
     <div class="container">
-      <section class="chart-section">
-        <div class="chart-controls">
-          <button data-range="1month">1 Month</button>
-          <button data-range="3month">3 Months</button>
-          <button data-range="1year">1 Year</button>
-          <button data-range="5year">5 Years</button>
+      <aside class="list-section card">
+        <div class="list-header">
+          <input id="searchInput" type="text" placeholder="Search stocks (e.g., AAPL, Tesla)" />
         </div>
-        <canvas id="stockChart"></canvas>
-        <div id="peakLowValues"></div>
-      </section>
+        <div id="stockList" class="list"></div>
+      </aside>
 
-      <aside class="list-section" id="stockList"></aside>
+      <main class="main">
+        <section class="chart-section card">
+          <div class="chart-controls">
+            <button data-range="1month" class="btn range-btn">1 Month</button>
+            <button data-range="3month" class="btn range-btn">3 Months</button>
+            <button data-range="1year" class="btn range-btn">1 Year</button>
+            <button data-range="5year" class="btn range-btn">5 Years</button>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="stockChart"></canvas>
+          </div>
+          <div id="peakLowValues" class="peak-low"></div>
+        </section>
 
-      <section class="details-section" id="stockDetails">
-        <h2 id="stockName"></h2>
-        <p>Profit: <span id="stockProfit"></span></p>
-        <p>Book Value: <span id="stockBookValue"></span></p>
-        <p id="stockSummary"></p>
-      </section>
+        <section class="details-section card" id="stockDetails">
+          <div class="details-header">
+            <h2 id="stockName"></h2>
+            <small id="stockFullName" class="muted"></small>
+          </div>
+          <div class="details-grid">
+            <div>
+              <p>Latest Price: <strong id="latestPrice">—</strong></p>
+              <p>Book/Cost per Share: <strong id="stockBookValue">—</strong></p>
+              <p>Summary:</p>
+              <p id="stockSummary" class="summary"></p>
+            </div>
+            <div class="portfolio">
+              <label class="field">
+                <span>Shares you own</span>
+                <input type="number" id="sharesInput" min="0" step="1" placeholder="0" />
+              </label>
+              <div class="portfolio-metrics">
+                <p>Total Cost: <strong id="totalCost">—</strong></p>
+                <p>Current Value: <strong id="currentValue">—</strong></p>
+                <p>Unrealized P/L: <strong id="unrealizedPL" class="pill">—</strong></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
+
+    <footer class="footer">
+      <span class="muted">Demo data only. Not financial advice.</span>
+    </footer>
 
     <script src="script.js"></script>
   </body>
